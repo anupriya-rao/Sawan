@@ -1,4 +1,4 @@
-export const API_URL = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:4080/api";
+export const API_URL = "https://sawan-1uov.onrender.com/api";
 
 export type Level = "green" | "yellow" | "orange" | "red";
 export type Cell = [number, number];
