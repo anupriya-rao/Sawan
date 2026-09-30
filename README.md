@@ -1,4 +1,4 @@
-# VARSHA: Regime-Aware AI Post-Processing of Monsoon Rainfall (SIH PS 26080)
+# VARSHA: Regime-Aware AI Post-Processing of Monsoon Rainfall 
 
 VARSHA identifies the monsoon regime the way IMD does. It then corrects raw NWP rainfall for that regime and publishes verified district-level heavy-rainfall guidance for India.
 
