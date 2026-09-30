@@ -15,7 +15,12 @@ export const LEVEL_ADVICE: Record<Level, string> = {
 export const LEVELS: Level[] = ["green", "yellow", "orange", "red"];
 
 /** Monsoon patterns: monsoon sea for active, marigold for break, storm cloud for depression, slate for normal. */
-export const REGIME_COLOR: Record<string, string> = { Active: "#0b4f6c", Break: "#c9861f", Normal: "#6b7c8a", Depression: "#26323f" };
+export const REGIME_COLOR: Record<string, string> = {
+  Active: "#0b5878",
+  Break: "#c9861f",
+  Normal: "#0b5878",
+  Depression: "#26323f",
+};
 export const SETTING_COLOR: Record<number, string> = { 0: "#3f6273", 1: "#8dc1d4", 3: "#e6edf1" };
 
 export const REGIME_PLAIN: Record<string, { title: string; text: string }> = {
@@ -50,7 +55,13 @@ export const rainClass = (x: number | null | undefined) => (x === null || x === 
 export const rainColor = (x: number | null | undefined) => rainClass(x)?.color ?? "#e6edf1";
 export const probColor = (p: number | null | undefined) => (p === null || p === undefined ? "#e6edf1" : p < 0.03 ? "#f8fbfc" : ramp(["#fdf0d5", "#f5c56a", "#e8702a", "#b3261e", "#6b1510"], Math.min(p / 0.6, 1)));
 
-export const CHART = { raw: "#aab7c1", sawan: "#0b4f6c", varsha: "#0b4f6c", ink: "#0f1f2b", mid: "#6b7c8a" };
+export const CHART = {
+  raw: "#aab7c1",
+  sawan: "#0b5878",
+  varsha: "#0b5878",
+  ink: "#0f2d43",
+  mid: "#536f80",
+};
 
 export const fmt = (x: number | null | undefined, d = 1) => (x === null || x === undefined || !Number.isFinite(x) ? "–" : x.toFixed(d));
 export const pct = (x: number | null | undefined) => (x === null || x === undefined ? "–" : `${Math.round(x * 100)}%`);

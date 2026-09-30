@@ -1,29 +1,49 @@
 @import "tailwindcss";
 
-/* VARSHA — "monsoon" identity: deep monsoon-sea blue, rain-cloud slate, marigold highlight.
-   Amber / orange / red are reserved for heavy-rain danger levels only. */
+/*
+  SAWAN — Monsoon visual identity
+  Deep monsoon blue + rain-cloud slate + soft sky blue
+  Marigold is reserved for highlights / USP labels.
+*/
+
 :root {
   color-scheme: light;
-  --bg: #f3f6f8;          /* after-rain sky */
+
+  /* Page */
+  --bg: #f4f8fa;
   --surface: #ffffff;
-  --panel: #e9f0f4;       /* light cloud */
-  --panel2: #fdf4e3;      /* marigold wash */
-  --ink: #0f1f2b;         /* storm cloud */
-  --muted: #53646f;
-  --faint: #8595a0;
-  --line: #dbe4ea;
-  --grid: #e8eef2;
-  --brand: #0b4f6c;       /* monsoon sea */
-  --accent: #0b4f6c;
-  --accent-ink: #083b51;
-  --accent-soft: #dcebf2;
+  --panel: #edf5f9;
+  --panel2: #fff6e5;
+
+  /* Text */
+  --ink: #0f2d43;
+  --muted: #536f80;
+  --faint: #7890a0;
+
+  /* Borders / grid */
+  --line: #d7e4eb;
+  --grid: #e5eef3;
+
+  /* Main SAWAN blue */
+  --brand: #0b5878;
+  --accent: #0879b2;
+  --accent-ink: #064b68;
+  --accent-soft: #dceff7;
+
+  /* Highlight */
   --marigold: #e9a23b;
-  --good: #0b4f6c;
+
+  /* Status */
+  --good: #0b5878;
   --bad: #b3261e;
-  --map-sea: #f8fbfc;
-  --map-land: #e6edf1;
-  --district-line: rgba(15, 31, 43, 0.22);
-  --brand-btn: #0b4f6c;
+
+  /* Map */
+  --map-sea: #f7fbfd;
+  --map-land: #e3edf2;
+  --district-line: rgba(15, 45, 67, 0.22);
+
+  /* Buttons */
+  --brand-btn: #0b5878;
 }
 
 body {
@@ -34,7 +54,9 @@ body {
   line-height: 1.55;
 }
 
-h1, h2, .serif {
+h1,
+h2,
+.serif {
   font-family: var(--font-poppins), system-ui, sans-serif;
   letter-spacing: -0.015em;
 }
@@ -46,13 +68,75 @@ h1, h2, .serif {
   padding-left: 14px;
   padding-right: 14px;
 }
+
 @media (min-width: 768px) {
-  .wrap { padding-left: 22px; padding-right: 22px; }
+  .wrap {
+    padding-left: 22px;
+    padding-right: 22px;
+  }
 }
 
-.no-scrollbar { scrollbar-width: none; }
-.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar {
+  scrollbar-width: none;
+}
 
-::selection { background: var(--accent-soft); }
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
 
-@keyframes fadein { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+::selection {
+  background: var(--accent-soft);
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+/* SAWAN THEME OVERRIDES */
+
+.bg-blue-600 {
+  background-color: var(--accent) !important;
+}
+
+.bg-blue-500 {
+  background-color: var(--accent) !important;
+}
+
+.hover\:bg-blue-700:hover {
+  background-color: var(--accent-ink) !important;
+}
+
+.text-blue-600 {
+  color: var(--accent) !important;
+}
+
+.text-blue-500 {
+  color: var(--accent) !important;
+}
+
+.border-blue-500 {
+  border-color: var(--accent) !important;
+}
+
+.border-blue-600 {
+  border-color: var(--accent) !important;
+}
+
+.focus\:border-blue-500:focus {
+  border-color: var(--accent) !important;
+}
+
+.accent-blue-600 {
+  accent-color: var(--accent) !important;
+}
+
+.bg-blue-50 {
+  background-color: var(--accent-soft) !important;
+}

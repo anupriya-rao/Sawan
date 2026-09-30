@@ -35,96 +35,152 @@ export const Header: React.FC<HeaderProps> = ({
 
   return (
     <header className="sticky top-0 z-50 border-b border-[var(--line,#dbe4ea)] bg-white/95 backdrop-blur">
-      <div className="wrap relative flex min-h-[125px] items-center justify-between gap-4 overflow-hidden py-4">
-        
-        <button
-          onClick={() => onTabChange("forecast")}
-          className="relative z-10 flex items-center gap-3 text-left"
-        >
-          <svg width="30" height="30" viewBox="0 0 32 32" aria-hidden="true">
-            <path
-              d="M16 3c5 7 9 11.5 9 16.5A9 9 0 0 1 7 19.5C7 14.5 11 10 16 3Z"
-              fill="#0b4f6c"
-            />
-            <path
-              d="M12 20.5a4 4 0 0 0 4 4"
-              stroke="#e9a23b"
-              strokeWidth={2.4}
-              fill="none"
-              strokeLinecap="round"
-            />
-          </svg>
 
-          <div>
-            <div className="flex items-center gap-2">
-              <span className="text-[24px] font-semibold leading-none tracking-tight text-[var(--brand,#0b4f6c)]">
-                SAWAN
+      {/* =========================================================
+          MAIN HEADER
+      ========================================================= */}
+
+      <div className="relative min-h-[135px] overflow-hidden">
+
+        {/* WEATHER IMAGE
+            Anchored to TOP-RIGHT so India/cyclone stays toward
+            the top of the header instead of being centered.
+        */}
+        <img
+          src="/sawan-header.png"
+          alt=""
+          className="pointer-events-none absolute inset-0 h-full w-full object-cover"
+          style={{
+            objectPosition: "right 7%",
+          }}
+        />
+
+        {/* WHITE FADE FOR TEXT READABILITY */}
+        <div
+          className="pointer-events-none absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(90deg, rgba(255,255,255,0.98) 0%, rgba(255,255,255,0.94) 28%, rgba(255,255,255,0.72) 48%, rgba(255,255,255,0.25) 70%, rgba(255,255,255,0.02) 100%)",
+          }}
+        />
+
+        {/* VERY LIGHT OVERLAY */}
+        <div className="pointer-events-none absolute inset-0 bg-white/5" />
+
+        {/* HEADER CONTENT */}
+        <div className="wrap relative z-10 flex min-h-[135px] items-center justify-between gap-6 py-4">
+
+          {/* =====================================================
+              SAWAN BRANDING
+          ===================================================== */}
+
+          <button
+            onClick={() => onTabChange("forecast")}
+            className="flex items-center gap-3 text-left"
+          >
+            <svg
+              width="30"
+              height="30"
+              viewBox="0 0 32 32"
+              aria-hidden="true"
+            >
+              <path
+                d="M16 3c5 7 9 11.5 9 16.5A9 9 0 0 1 7 19.5C7 14.5 11 10 16 3Z"
+                fill="var(--brand)"
+              />
+
+              <path
+                d="M12 20.5a4 4 0 0 0 4 4"
+                stroke="#e9a23b"
+                strokeWidth={2.4}
+                fill="none"
+                strokeLinecap="round"
+              />
+            </svg>
+
+            <div>
+              <div className="flex items-center gap-2">
+
+                <span className="text-[24px] font-semibold leading-none tracking-tight text-[var(--brand,#0b5878)]">
+                  SAWAN
+                </span>
+
+                <span className="rounded-full bg-[var(--accent,#0879b2)] px-2.5 py-0.5 text-xs font-semibold text-white shadow-sm">
+                  AI Engine
+                </span>
+
+              </div>
+
+              <div className="mt-1 text-[13px] text-[var(--muted,#536f80)]">
+                Monsoon rain forecasts &amp; AI intelligence for every
+                district of India
+              </div>
+
+              <div className="mt-1 text-[11px] text-slate-500">
+                Ministry of Earth Sciences (MoES) · NCMRWF
+              </div>
+            </div>
+          </button>
+
+          {/* =====================================================
+              CURRENT REGIME + DATE
+          ===================================================== */}
+
+          {meta && (
+            <div className="relative z-10 flex shrink-0 items-center gap-3 text-[13px]">
+
+              {/* MONSOON STATUS */}
+              <span className="inline-flex items-center gap-2 rounded-full border border-[var(--line,#d7e4eb)] bg-white/90 px-3 py-1.5 shadow-sm backdrop-blur-sm">
+
+                <span className="h-2.5 w-2.5 animate-pulse rounded-full bg-emerald-500" />
+
+                <span className="font-medium text-[var(--ink,#0f2d43)]">
+                  {r?.large_scale
+                    ? `${r.large_scale} Monsoon`
+                    : "Normal Monsoon"}
+                </span>
+
               </span>
 
-              <span className="rounded-full bg-blue-600 px-2.5 py-0.5 text-xs font-semibold text-white">
-                AI Engine
+              {/* UPDATED DATE */}
+              <span className="rounded-md bg-white/70 px-2 py-1 text-[var(--muted,#536f80)] backdrop-blur-sm">
+                Updated {meta.issue ?? "Tue, 29 Sept"}
               </span>
+
             </div>
-
-            <div className="mt-1 text-[13px] text-[var(--muted,#53646f)]">
-              Monsoon rain forecasts &amp; AI intelligence for every district of India
-            </div>
-
-            <div className="mt-1 text-[11px] text-slate-500">
-              Ministry of Earth Sciences (MoES) · NCMRWF
-            </div>
-          </div>
-        </button>
-
-        <div className="pointer-events-none absolute right-0 top-0 h-full w-[360px]">
-          <img
-            src="/sawan-header.png"
-            alt="India monsoon weather"
-            className="h-full w-full object-cover"
-          />
-
-          <div className="absolute inset-0 bg-gradient-to-r from-white via-white/30 to-transparent" />
+          )}
         </div>
-
-        {meta && (
-          <div className="relative z-10 mr-[300px] flex items-center gap-3 text-[13px]">
-            <span className="inline-flex items-center gap-2 rounded-full border border-[var(--line,#dbe4ea)] bg-slate-50 px-3 py-1.5">
-              <span className="h-2.5 w-2.5 animate-pulse rounded-full bg-emerald-500" />
-
-              <span className="font-medium text-slate-800">
-                {r?.large_scale
-                  ? `${r.large_scale} Monsoon`
-                  : "Normal Monsoon"}
-              </span>
-            </span>
-
-            <span className="text-[var(--muted,#53646f)]">
-              Updated {meta.issue ?? "Tue, 29 Sept"}
-            </span>
-          </div>
-        )}
       </div>
 
-      <nav className="wrap no-scrollbar flex gap-6 overflow-x-auto border-t border-slate-100 pt-1">
+      {/* =========================================================
+          NAVIGATION
+      ========================================================= */}
+
+      <nav className="wrap no-scrollbar flex gap-6 overflow-x-auto border-t border-slate-100 bg-white pt-1">
+
         {TABS.map((t) => (
           <button
             key={t.id}
             onClick={() => onTabChange(t.id)}
             className={`-mb-px flex shrink-0 items-center gap-1.5 border-b-2 pb-3 pt-2 text-[14px] transition-colors ${
               activeTab === t.id
-                ? "border-[var(--accent,#0b4f6c)] font-semibold text-[var(--ink,#0f1f2b)]"
-                : "border-transparent text-[var(--muted,#53646f)] hover:text-[var(--ink,#0f1f2b)]"
+                ? "border-[var(--accent,#0879b2)] font-semibold text-[var(--ink,#0f2d43)]"
+                : "border-transparent text-[var(--muted,#536f80)] hover:text-[var(--ink,#0f2d43)]"
             }`}
           >
+
             {t.label}
 
+            {/* BADGE */}
             {t.badge && (
-              <span className="rounded bg-blue-600 px-1.5 py-0.5 text-[10px] font-bold text-white">
+              <span className="rounded-full bg-[var(--accent,#0879b2)] px-2.5 py-0.5 text-xs font-semibold text-white shadow-sm">
                 {t.badge}
               </span>
             )}
+
           </button>
         ))}
+
       </nav>
     </header>
   );
